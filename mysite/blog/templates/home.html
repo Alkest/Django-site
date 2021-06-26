@@ -1,0 +1,18 @@
+{% extends 'polls/base_template.html' %}
+
+{% block content %}
+<h1 align="left" style="color:#000000" class="p-3">Blogs
+
+    <a class="btn btn-primary btn-dark rounded-0 ms-4" href="{% url 'post_new' %}">New Blog Post</a>
+
+</h1>
+<ul style="margin-left: 15px; margin-top: 15px" type="square">
+    {% for post in object_list %}
+
+    <li><h3><a style="color:#000000" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+    </h3></li>
+
+    {% endfor %}
+</ul>
+{% endblock content %}
+

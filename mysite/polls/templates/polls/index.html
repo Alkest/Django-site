@@ -1,0 +1,29 @@
+{% extends "polls/base_template.html" %}
+
+{% block title %}  <title>Вопросы</title> {% endblock %}
+
+{% block content %}
+<h1>
+    <p align="left" style="color:#000000" class="p-3">
+        Polls</h1>
+
+<div style="margin-left: 15px;" align="left">
+
+    <a class="btn btn-primary btn-dark rounded-0" href="{% url 'polls:question_new' %}">New Poll</a>
+    <a class="btn btn-primary btn-dark rounded-0" href="{% url 'polls:create_choice' %}">New choice</a>
+
+</div>
+{% if latest_question_list %}
+
+<ul class="list-group-flush">
+    {% for question in latest_question_list %}
+    <p align="center" style="color:#000000">
+
+        <li class="list-group-item">
+    <h3><a style="color:#000000" href="{% url 'polls:detail' question.id %}">{{ question.question_text}}</a></li></h3>
+    {% endfor %}
+</ul>
+{% else %}
+<p align="center" style="color:#000000"> Нет доступных опросов</p>
+{% endif %}
+{% endblock content %}
